@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+set -e
+set -o nounset
+set -o pipefail
+
+export ENV="${ENV:-dev}"
+
+if [[ -f ".env.${ENV}" ]]; then
+    set -a
+    . ".env.${ENV}"
+    set +a
+fi
+
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -o xtrace
+fi
+
+log() {
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')] $*"
+}
+
+help_function() {
+    cat <<EOF
+
+Usage: $(basename "$0") [-h] [-u]
+
+Development ladder for comfy-toolset (ComfyUI custom node pack).
+Default (no args): install dev env -> lint -> format -> unit tests.
+
+Options:
+  -h, --help       Display this help message and exit
+  -u, --unit-test  Run unit tests only (skip env setup and lint)
+
+EOF
+}
+
+command_exists() {
+    type "$1" &> /dev/null
+}
+
+check_dependencies() {
+    if ! command_exists "uv"; then
+        log "uv not found. Installing..."
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        if [[ -f "$HOME/.local/bin/env" ]]; then
+            . "$HOME/.local/bin/env"
+        fi
+    fi
+    return 0
+}
+
+validate_and_build() {
+    log "Setting up environment"
+    if ! uv sync --locked -q 2>/dev/null && ! uv sync -q; then
+        log "ERROR: Environment setup failed"
+        return 1
+    fi
+
+    if ! uv run ruff check --fix -q .; then
+        log "ERROR: Lint failed"
+        return 1
+    fi
+
+    if ! uv run ruff format -q .; then
+        log "ERROR: Formatting failed"
+        return 1
+    fi
+
+    return 0
+}
+
+test_unit() {
+    log "Running unit tests..."
+    if ! uv run pytest -q; then
+        log "ERROR: Unit tests failed"
+        return 1
+    fi
+    return 0
+}
+
+main() {
+    check_dependencies
+
+    while [[ "$#" -gt 0 ]]; do
+        case "$1" in
+            -h|--help)
+                help_function
+                exit 0
+                ;;
+            -u|--unit-test)
+                test_unit || { log "Unit tests failed"; exit 1; }
+                exit 0
+                ;;
+            *)
+                echo "Unknown parameter passed: $1"
+                help_function
+                exit 1
+                ;;
+        esac
+    done
+
+    validate_and_build || exit 1
+    test_unit || exit 1
+    log "All green."
+}
+
+main "$@"

@@ -1,0 +1,34 @@
+[project]
+name = "comfy-toolset"
+version = "0.1.0"
+description = "Minimal ComfyUI switch nodes: flip a workflow between a draft (LoRA, short, fast) profile and a final (full quality, max length, no LoRA) profile with true branch bypass via lazy evaluation."
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/JimothyJohn/comfy-toolset"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.comfy]
+# PublisherId must match your Comfy Registry publisher once created
+# (https://registry.comfy.org) — placeholder until then.
+PublisherId = "jimothyjohn"
+DisplayName = "Comfy Toolset"
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint.per-file-ignores]
+# ComfyUI custom node packs are loaded by directory path; the directory
+# must match the repo name, hyphen included.
+"__init__.py" = ["N999"]
