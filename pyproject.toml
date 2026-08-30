@@ -10,7 +10,7 @@ dependencies = []
 Repository = "https://github.com/JimothyJohn/comfy-toolset"
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=8", "ruff>=0.6", "ty"]
 
 [tool.comfy]
 # PublisherId must match your Comfy Registry publisher once created
