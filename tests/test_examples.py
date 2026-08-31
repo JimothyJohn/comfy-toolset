@@ -74,6 +74,7 @@ def test_examples_exist():
     assert {
         "repeat-loop-demo",
         "quality-mode-switch",
+        "quick-check-final-render",
         "minimax-h3-shot-chain",
         "minimax-h3-ref2va-subgraph",
     } <= names

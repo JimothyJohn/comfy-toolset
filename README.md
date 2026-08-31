@@ -47,6 +47,26 @@ conditioning, …) with the same lazy bypass. Chain its `pick_b` from
 `is_final` to hang more per-mode differences (an upscaler, an
 interpolator) off the same toggle.
 
+### Render Mode (quick check / final render) (`toolset`)
+
+The two-control switch for the H3 flow — everything not directly tied
+to the output is preset:
+
+|  | quick check | final render |
+|---|---|---|
+| resolution | 0.2 MP | 0.9 MP |
+| length | capped at 4 s | your `seconds` |
+| model | Lightning LoRA | full model |
+| interpolation | none (lazily bypassed) | FILM ×2 → 48 fps |
+| filename_prefix | `video/quick-check` | `video/final-render` |
+
+You touch `mode` and `seconds`; the outputs (`seconds`, `megapixels`,
+`fps`, `lightning_lora`, `is_final`, `filename_prefix`) wire once into
+the official H3 template. Iterate on quick check, flip, render once —
+the distinct filename prefixes mean a final never overwrites a check.
+Need different numbers? Quality Mode Switch is the fully adjustable
+version.
+
 ### Subject Prompt (H3 refs) (`toolset`)
 
 Automatic `<Picture i>` bookkeeping for MiniMax H3 reference-to-video:
@@ -104,6 +124,10 @@ first was also executed end-to-end in CI conditions.
 - **`repeat-loop-demo.json`** — runs out of the box, zero models/keys:
   a 3-pass counted loop you can watch work (final preview shows `xxxx`),
   plus a Lazy Switch branch demo. Start here.
+- **`quick-check-final-render.json`** — **start here for H3**: the
+  official local H3 image-to-video template with a single Render Mode
+  node. Two controls (mode toggle + final length); quick checks and
+  final renders save under different prefixes.
 - **`quality-mode-switch.json`** — the official local MiniMax H3
   image-to-video template with one toggle added: draft = 0.2 MP, 4 s,
   Lightning LoRA; final = 0.9 MP, 9 s, full model + FILM VFI ×2 at
