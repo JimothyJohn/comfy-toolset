@@ -23,6 +23,10 @@ package = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = '-m "not integration"'
+markers = [
+    "integration: live tests against a real ComfyUI server (needs COMFYUI_DIR); run with `pytest -m integration`",
+]
 
 [tool.ruff]
 line-length = 88

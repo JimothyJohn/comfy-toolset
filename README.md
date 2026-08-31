@@ -96,7 +96,34 @@ Restart ComfyUI. No pip installs needed.
 
 ```sh
 ./Quickstart        # install dev env, lint, format, unit tests
-./Quickstart -u     # tests only
+./Quickstart -u     # unit tests only
+./Quickstart -i     # live tests against a real ComfyUI (needs COMFYUI_DIR)
 ```
 
-Stack: `uv`, `ruff`, `pytest`. Tests run without ComfyUI installed.
+Stack: `uv`, `ruff`, `ty`, `pytest`. Unit tests run without ComfyUI
+installed.
+
+## Staying compatible with ComfyUI
+
+Beyond the structural defenses (zero runtime deps; no ComfyUI imports
+except the guarded, documented `comfy_execution` expansion API), the
+repo tests against the real thing:
+
+- **Integration suite** (`tests/integration/`): boots an actual
+  ComfyUI server (`--cpu`, no models) with this pack symlinked into
+  `custom_nodes` and drives it over the public HTTP API — node
+  registration (`/object_info`), lazy-evaluation flags, and workflow
+  execution (`/prompt` + `/history`) including full loop expansion,
+  plus a direct canary on the `comfy_execution.graph_utils` surface.
+- **Every PR** runs the suite against the **latest ComfyUI release**
+  (`comfy-integration` job in `ci.yml`).
+- **Daily** (`compat.yml`), the same suite runs against ComfyUI
+  **master** and the latest release; a failure opens or updates a
+  `comfy-compat` issue, so upstream drift is caught the day it lands.
+
+Provision a throwaway checkout for local runs:
+
+```sh
+./scripts/setup-comfyui.sh /tmp/ComfyUI master   # or latest-release, or a tag
+COMFYUI_DIR=/tmp/ComfyUI ./Quickstart -i
+```
