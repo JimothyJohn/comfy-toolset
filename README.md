@@ -156,6 +156,11 @@ git clone https://github.com/JimothyJohn/comfy-toolset
 
 Restart ComfyUI. No pip installs needed.
 
+**Updating:** after `git pull`, restart ComfyUI — nodes are Python
+modules loaded at boot, so a running server keeps serving the old
+pack until restarted. If a workflow reports missing node types right
+after an update, this is why.
+
 ## Development
 
 ```sh
