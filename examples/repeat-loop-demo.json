@@ -1,0 +1,1025 @@
+{
+ "id": "00000000-0000-0000-0000-000000000000",
+ "revision": 0,
+ "last_node_id": 10,
+ "last_link_id": 8,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "MarkdownNote",
+   "pos": [
+    -540,
+    40
+   ],
+   "size": [
+    500,
+    420
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [],
+   "outputs": [],
+   "title": "READ ME FIRST",
+   "properties": {},
+   "widgets_values": [
+    "## Repeat loop demo \u2014 runs out of the box (no models, no API keys)\n\nPress **Run**. The loop body executes **3 times** (iterations widget on\nRepeat Open); each pass appends one \"x\" to the carried string, so the\nfinal preview shows **xxxx** (the start \"x\" + 3 passes).\n\nHow it works:\n- **Repeat Open -> Repeat Close** re-execute everything between them.\n- \"value\" slots carry data from one pass to the next.\n- Only 2 loop wires are required: flow_control + your value slots.\n  The count lives in the *iterations widget* (it must stay a widget,\n  not a connection).\n- Watch the terminal: the pack logs every pass\n  (\"[Repeat Open] pass 2 of 3 ...\").\n\nBelow: **Lazy Switch** \u2014 flip the toggle and only the chosen branch\n*ever executes* (the other is bypassed, not just ignored)."
+   ],
+   "widgets_values_named": {
+    "text": "## Repeat loop demo \u2014 runs out of the box (no models, no API keys)\n\nPress **Run**. The loop body executes **3 times** (iterations widget on\nRepeat Open); each pass appends one \"x\" to the carried string, so the\nfinal preview shows **xxxx** (the start \"x\" + 3 passes).\n\nHow it works:\n- **Repeat Open -> Repeat Close** re-execute everything between them.\n- \"value\" slots carry data from one pass to the next.\n- Only 2 loop wires are required: flow_control + your value slots.\n  The count lives in the *iterations widget* (it must stay a widget,\n  not a connection).\n- Watch the terminal: the pack logs every pass\n  (\"[Repeat Open] pass 2 of 3 ...\").\n\nBelow: **Lazy Switch** \u2014 flip the toggle and only the chosen branch\n*ever executes* (the other is bypassed, not just ignored)."
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 2,
+   "type": "PrimitiveString",
+   "pos": [
+    40,
+    80
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value",
+     "locked": null,
+     "name": "value",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      1
+     ]
+    }
+   ],
+   "title": "start value",
+   "properties": {
+    "Node name for S&R": "PrimitiveString"
+   },
+   "widgets_values": [
+    "x"
+   ],
+   "widgets_values_named": {
+    "value": "x"
+   }
+  },
+  {
+   "id": 3,
+   "type": "RepeatOpen",
+   "pos": [
+    340,
+    80
+   ],
+   "size": [
+    270,
+    178
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value0",
+     "locked": null,
+     "name": "value0",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": 1
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value1",
+     "locked": null,
+     "name": "value1",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value2",
+     "locked": null,
+     "name": "value2",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value3",
+     "locked": null,
+     "name": "value3",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "_remaining",
+     "locked": null,
+     "name": "_remaining",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "INT",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "iterations",
+     "locked": null,
+     "name": "iterations",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "INT",
+     "widget": {
+      "name": "iterations"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "flow_control",
+     "locked": null,
+     "name": "flow_control",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "FLOW_CONTROL",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      2
+     ]
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "index",
+     "locked": null,
+     "name": "index",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "INT",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "iterations",
+     "locked": null,
+     "name": "iterations",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "INT",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value0",
+     "locked": null,
+     "name": "value0",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      3
+     ]
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value1",
+     "locked": null,
+     "name": "value1",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value2",
+     "locked": null,
+     "name": "value2",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value3",
+     "locked": null,
+     "name": "value3",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "RepeatOpen"
+   },
+   "widgets_values": [
+    3
+   ],
+   "widgets_values_named": {
+    "iterations": 3
+   }
+  },
+  {
+   "id": 4,
+   "type": "StringConcatenate",
+   "pos": [
+    700,
+    80
+   ],
+   "size": [
+    400,
+    200
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "string_a",
+     "locked": null,
+     "name": "string_a",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "string_a"
+     },
+     "link": 3
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "string_b",
+     "locked": null,
+     "name": "string_b",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "string_b"
+     },
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "delimiter",
+     "locked": null,
+     "name": "delimiter",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "delimiter"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      4
+     ]
+    }
+   ],
+   "title": "loop body: append one x per pass",
+   "properties": {
+    "Node name for S&R": "StringConcatenate"
+   },
+   "widgets_values": [
+    "",
+    "x",
+    ""
+   ],
+   "widgets_values_named": {
+    "string_a": "",
+    "string_b": "x",
+    "delimiter": ""
+   }
+  },
+  {
+   "id": 5,
+   "type": "RepeatClose",
+   "pos": [
+    1060,
+    80
+   ],
+   "size": [
+    204.304296875,
+    106
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "flow_control",
+     "locked": null,
+     "name": "flow_control",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "FLOW_CONTROL",
+     "pos": null,
+     "link": 2
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value0",
+     "locked": null,
+     "name": "value0",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": 4
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value1",
+     "locked": null,
+     "name": "value1",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value2",
+     "locked": null,
+     "name": "value2",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value3",
+     "locked": null,
+     "name": "value3",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value0",
+     "locked": null,
+     "name": "value0",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      5
+     ]
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value1",
+     "locked": null,
+     "name": "value1",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value2",
+     "locked": null,
+     "name": "value2",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value3",
+     "locked": null,
+     "name": "value3",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "RepeatClose"
+   }
+  },
+  {
+   "id": 6,
+   "type": "PreviewAny",
+   "pos": [
+    1360,
+    80
+   ],
+   "size": [
+    210,
+    122
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "source",
+     "locked": null,
+     "name": "source",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "link": 5
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    }
+   ],
+   "title": "final result (expect: xxxx)",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  },
+  {
+   "id": 7,
+   "type": "PrimitiveString",
+   "pos": [
+    40,
+    560
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value",
+     "locked": null,
+     "name": "value",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      6
+     ]
+    }
+   ],
+   "title": "path A",
+   "properties": {
+    "Node name for S&R": "PrimitiveString"
+   },
+   "widgets_values": [
+    "took path A"
+   ],
+   "widgets_values_named": {
+    "value": "took path A"
+   }
+  },
+  {
+   "id": 8,
+   "type": "PrimitiveString",
+   "pos": [
+    40,
+    680
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value",
+     "locked": null,
+     "name": "value",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      7
+     ]
+    }
+   ],
+   "title": "path B",
+   "properties": {
+    "Node name for S&R": "PrimitiveString"
+   },
+   "widgets_values": [
+    "took path B"
+   ],
+   "widgets_values_named": {
+    "value": "took path B"
+   }
+  },
+  {
+   "id": 9,
+   "type": "LazySwitch",
+   "pos": [
+    340,
+    600
+   ],
+   "size": [
+    270,
+    78
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "a",
+     "locked": null,
+     "name": "a",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": 6
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "b",
+     "locked": null,
+     "name": "b",
+     "nameLocked": null,
+     "removable": null,
+     "shape": 7,
+     "type": "*",
+     "pos": null,
+     "link": 7
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "pick_b",
+     "locked": null,
+     "name": "pick_b",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "pick_b"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "value",
+     "locked": null,
+     "name": "value",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      8
+     ]
+    }
+   ],
+   "title": "flip me",
+   "properties": {
+    "Node name for S&R": "LazySwitch"
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "pick_b": false
+   }
+  },
+  {
+   "id": 10,
+   "type": "PreviewAny",
+   "pos": [
+    700,
+    600
+   ],
+   "size": [
+    210,
+    122
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "showAdvanced": null,
+   "inputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "source",
+     "locked": null,
+     "name": "source",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "*",
+     "pos": null,
+     "link": 8
+    }
+   ],
+   "outputs": [
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "STRING",
+     "locked": null,
+     "name": "STRING",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": null
+    }
+   ],
+   "title": "which path ran?",
+   "properties": {
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  }
+ ],
+ "links": [
+  [
+   1,
+   2,
+   0,
+   3,
+   0,
+   "STRING"
+  ],
+  [
+   2,
+   3,
+   0,
+   5,
+   0,
+   "FLOW_CONTROL"
+  ],
+  [
+   3,
+   3,
+   3,
+   4,
+   0,
+   "STRING"
+  ],
+  [
+   4,
+   4,
+   0,
+   5,
+   1,
+   "STRING"
+  ],
+  [
+   5,
+   5,
+   0,
+   6,
+   0,
+   "*"
+  ],
+  [
+   6,
+   7,
+   0,
+   9,
+   0,
+   "STRING"
+  ],
+  [
+   7,
+   8,
+   0,
+   9,
+   1,
+   "STRING"
+  ],
+  [
+   8,
+   9,
+   0,
+   10,
+   0,
+   "*"
+  ]
+ ],
+ "floatingLinks": null,
+ "groups": [],
+ "definitions": null,
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.9,
+   "offset": [
+    416,
+    110
+   ]
+  },
+  "reroutes": null
+ },
+ "version": 0.4
+}

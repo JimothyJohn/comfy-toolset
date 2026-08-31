@@ -19,6 +19,10 @@ API). The import is guarded so the module stays importable and testable
 without ComfyUI; tests substitute GraphBuilder.
 """
 
+import logging
+
+logger = logging.getLogger("comfy-toolset")
+
 try:
     from comfy_execution.graph_utils import (  # ty: ignore[unresolved-import]
         GraphBuilder,
@@ -80,6 +84,12 @@ class RepeatOpen:
     def start(self, iterations, _remaining=None, **kwargs):
         remaining = iterations if _remaining is None else _remaining
         index = iterations - remaining
+        logger.info(
+            "[Repeat Open] pass %d of %d starting (slots connected: %s)",
+            index + 1,
+            iterations,
+            [name for name in _SLOT_NAMES if kwargs.get(name) is not None] or "none",
+        )
         values = tuple(kwargs.get(name) for name in _SLOT_NAMES)
         # The FLOW_CONTROL output's value is never read: Repeat Close
         # declares it rawLink and uses the link itself to find this node.
@@ -174,6 +184,11 @@ class RepeatClose:
             remaining = iterations
 
         if remaining <= 1:
+            logger.info(
+                "[Repeat Close] loop finished after %d pass(es); final values "
+                "flowing out",
+                iterations,
+            )
             return tuple(kwargs.get(name) for name in _SLOT_NAMES)
 
         # Unroll one more pass: clone the loop body, feed this pass's
@@ -211,6 +226,14 @@ class RepeatClose:
         for name in _SLOT_NAMES:
             clone_open.set_input(name, kwargs.get(name))
 
+        logger.info(
+            "[Repeat Close] pass %d of %d done — expanding pass %d "
+            "(%d nodes in loop body)",
+            iterations - remaining + 1,
+            iterations,
+            iterations - remaining + 2,
+            len(contained),
+        )
         clone_close = graph.lookup_node("Recurse")
         return {
             "result": tuple(clone_close.out(i) for i in range(NUM_SLOTS)),

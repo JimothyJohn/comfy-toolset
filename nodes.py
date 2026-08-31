@@ -10,6 +10,10 @@ Bypass mechanism: inputs marked ``"lazy": True`` are only evaluated when
 unselected branch (LoRA loaders included) is never executed at all.
 """
 
+import logging
+
+logger = logging.getLogger("comfy-toolset")
+
 
 class AnyType(str):
     """Type string that never compares unequal, so it matches any socket."""
@@ -97,12 +101,34 @@ class QualityModeSwitch:
         model = final_model if mode else draft_model
         if model is None:
             which = "final_model" if mode else "draft_model"
+            hint = (
+                "connect your clean (no-LoRA) model to 'final_model'"
+                if mode
+                else "connect your LoRA-patched model to 'draft_model'"
+            )
             raise ValueError(
                 f"QualityModeSwitch: mode is '{'final' if mode else 'draft'}' "
-                f"but nothing is connected to '{which}'."
+                f"but nothing is connected to '{which}' — {hint}, or flip the "
+                "mode toggle."
             )
         if mode:
+            logger.info(
+                "[Quality Mode Switch] FINAL mode: fps=%s frames=%s steps=%s "
+                "cfg=%s (draft branch bypassed — its LoRA chain never runs)",
+                final_fps,
+                final_frames,
+                final_steps,
+                final_cfg,
+            )
             return (model, final_fps, final_frames, final_steps, final_cfg, True)
+        logger.info(
+            "[Quality Mode Switch] DRAFT mode: fps=%s frames=%s steps=%s "
+            "cfg=%s (final branch bypassed)",
+            draft_fps,
+            draft_frames,
+            draft_steps,
+            draft_cfg,
+        )
         return (model, draft_fps, draft_frames, draft_steps, draft_cfg, False)
 
 
@@ -150,10 +176,17 @@ class LazySwitch:
     def route(self, pick_b, a=None, b=None):
         value = b if pick_b else a
         if value is None:
+            picked = "b" if pick_b else "a"
             raise ValueError(
-                f"LazySwitch: input '{'b' if pick_b else 'a'}' is selected "
-                "but not connected."
+                f"LazySwitch: input '{picked}' is selected but not connected "
+                f"— wire something into '{picked}' or flip the toggle to "
+                f"'{'a' if pick_b else 'b'}'."
             )
+        logger.info(
+            "[Lazy Switch] picked '%s' (%s); other branch bypassed",
+            "b" if pick_b else "a",
+            type(value).__name__,
+        )
         return (value,)
 
 

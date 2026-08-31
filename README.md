@@ -83,6 +83,28 @@ Each pass: `value0` carries the latest last-frame into the next shot,
 `value1` accumulates the growing frame batch, and after N passes Repeat
 Close's `value1` holds every frame of the full animation.
 
+## Example workflows
+
+Drag any file from [`examples/`](examples/) onto the ComfyUI canvas.
+Each carries a READ ME note explaining exactly what to click. All three
+were generated and load-verified by the ComfyUI frontend itself; the
+first was also executed end-to-end in CI conditions.
+
+- **`repeat-loop-demo.json`** — runs out of the box, zero models/keys:
+  a 3-pass counted loop you can watch work (final preview shows `xxxx`),
+  plus a Lazy Switch branch demo. Start here.
+- **`quality-mode-switch.json`** — full draft/final txt2img graph: pick
+  a checkpoint + a lightning/turbo LoRA and the `mode` toggle switches
+  model path, steps, and cfg in one click.
+- **`minimax-h3-shot-chain.json`** — the long-animation recipe: N
+  MiniMax H3 shots chained first-frame ← last-frame, frames accumulated
+  across passes, assembled into one video. Needs a Comfy API key and
+  credits.
+
+The nodes log every decision to the ComfyUI terminal (`[Repeat Open]
+pass 2 of 3 ...`, `[Quality Mode Switch] DRAFT mode: ...`), and every
+error names the exact input to fix.
+
 ## Install
 
 ```sh
