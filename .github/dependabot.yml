@@ -1,0 +1,41 @@
+# Baseline Dependabot config — copy to .github/dependabot.yml.
+# Weekly, grouped one-PR-per-ecosystem, targeting the `dev` integration
+# branch; the automerge workflow lands green PRs automatically and `dev` is
+# promoted to the default branch by Nick's manual merge.
+# For Rust repos, swap the "uv" entry's package-ecosystem to "cargo".
+# NOTE: Dependabot reads this file from the repo's DEFAULT branch only — it
+# does nothing while the file exists solely on dev (this bit fonts in 2026-08).
+version: 2
+
+updates:
+  - package-ecosystem: "uv" # "cargo" for Rust repos
+    directory: "/"
+    target-branch: "dev"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "deps"
+    groups:
+      minor-patch:
+        update-types: ["minor", "patch"]
+
+  # The SHA-pinned actions in .github/workflows/*.yml (checkout, setup-uv, ...).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "dev"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "ci"
+    commit-message:
+      prefix: "ci(actions)"
+    groups:
+      actions:
+        patterns:
+          - "*"

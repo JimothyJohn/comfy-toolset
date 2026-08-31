@@ -1,0 +1,41 @@
+# Baseline CI for Python (uv) repos — copy to .github/workflows/ci.yml.
+# The `gate` job name is the required status check that branch protection on
+# `dev` and the automerge workflow rely on: if you rename the job or add jobs,
+# update the protection rule's contexts to match (see README.md).
+# SHA-pinned actions only (house rule). Bump pins via Dependabot's
+# github-actions ecosystem, not by hand-editing to a tag.
+# Add repo-specific build/asset steps after the test step; if the repo builds
+# for exotic targets (embedded, cross), add a job for those too, generating
+# throwaway fixtures (certs, keys) on the runner rather than committing them.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master, dev] # both default-branch names; the absent one never fires
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          enable-cache: true
+      - name: Sync dependencies (locked)
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check .
+      - name: Format check
+        run: uv run ruff format --check .
+      - name: Type check
+        run: uv run ty check
+      - name: Test
+        run: uv run pytest
