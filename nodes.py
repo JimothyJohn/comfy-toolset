@@ -335,14 +335,118 @@ class SubjectPrompt:
         return (prompt, *padded, len(pictures))
 
 
+class RenderMode:
+    """Quick check or final render — the two-control switch.
+
+    Everything not directly tied to the output is preset: quick check
+    runs 0.2 MP with the Lightning LoRA, capped at 4 s, no
+    interpolation; final render runs 0.9 MP with the full model at your
+    requested length, FILM-interpolated ×2 to 48 fps. You touch two
+    things: the mode toggle and how long the final render should be.
+
+    Wire the outputs once — ``megapixels`` to the resolution scaler,
+    ``seconds`` to the duration input, ``lightning_lora`` to the H3
+    subgraph's Enable Lightning LoRA, ``is_final`` to the LazySwitch
+    gating the interpolator, ``fps`` to Create Video, and
+    ``filename_prefix`` to Save Video so quick checks and finals never
+    overwrite each other. QualityModeSwitch remains the fully
+    adjustable generic alternative.
+    """
+
+    CATEGORY = "toolset"
+    FUNCTION = "route"
+
+    QUICK_MEGAPIXELS = 0.2
+    FINAL_MEGAPIXELS = 0.9
+    QUICK_MAX_SECONDS = 4.0
+    BASE_FPS = 24.0
+    INTERPOLATION_MULTIPLIER = 2
+    QUICK_PREFIX = "video/quick-check"
+    FINAL_PREFIX = "video/final-render"
+
+    RETURN_TYPES = ("FLOAT", "FLOAT", "FLOAT", "BOOLEAN", "BOOLEAN", "STRING")
+    RETURN_NAMES = (
+        "seconds",
+        "megapixels",
+        "fps",
+        "lightning_lora",
+        "is_final",
+        "filename_prefix",
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "mode": (
+                    "BOOLEAN",
+                    {
+                        "default": False,
+                        "label_on": "final render",
+                        "label_off": "quick check",
+                    },
+                ),
+                "seconds": (
+                    "FLOAT",
+                    {
+                        "default": 9.0,
+                        "min": 0.1,
+                        "max": 3600.0,
+                        "step": 0.1,
+                        "tooltip": "Final render length. Quick checks are "
+                        f"automatically capped at {cls.QUICK_MAX_SECONDS:g}s.",
+                    },
+                ),
+            },
+        }
+
+    def route(self, mode, seconds):
+        if mode:
+            fps = self.BASE_FPS * self.INTERPOLATION_MULTIPLIER
+            logger.info(
+                "[Render Mode] FINAL RENDER: %.1fs @ %.1fMP, full model, "
+                "interpolated x%d -> %.0f fps",
+                seconds,
+                self.FINAL_MEGAPIXELS,
+                self.INTERPOLATION_MULTIPLIER,
+                fps,
+            )
+            return (
+                seconds,
+                self.FINAL_MEGAPIXELS,
+                fps,
+                False,
+                True,
+                self.FINAL_PREFIX,
+            )
+        quick_seconds = min(seconds, self.QUICK_MAX_SECONDS)
+        logger.info(
+            "[Render Mode] QUICK CHECK: %.1fs @ %.1fMP, lightning LoRA, "
+            "no interpolation (%.0f fps)",
+            quick_seconds,
+            self.QUICK_MEGAPIXELS,
+            self.BASE_FPS,
+        )
+        return (
+            quick_seconds,
+            self.QUICK_MEGAPIXELS,
+            self.BASE_FPS,
+            True,
+            False,
+            self.QUICK_PREFIX,
+        )
+
+
 NODE_CLASS_MAPPINGS = {
     "QualityModeSwitch": QualityModeSwitch,
     "LazySwitch": LazySwitch,
     "SubjectPrompt": SubjectPrompt,
+    "RenderMode": RenderMode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "QualityModeSwitch": "Quality Mode Switch",
     "LazySwitch": "Lazy Switch (Any)",
     "SubjectPrompt": "Subject Prompt (H3 refs)",
+    "RenderMode": "Render Mode (quick check / final render)",
 }

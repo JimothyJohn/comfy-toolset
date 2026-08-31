@@ -2,7 +2,7 @@
  "id": "e3f2b845-8f2c-4b5a-9caf-eac1029d3e7e",
  "revision": 0,
  "last_node_id": 168,
- "last_link_id": 372,
+ "last_link_id": 374,
  "nodes": [
   {
    "id": 92,
@@ -50,7 +50,7 @@
      "widget": {
       "name": "filename_prefix"
      },
-     "link": null
+     "link": 374
     },
     {
      "color_off": null,
@@ -256,7 +256,7 @@
      "widget": {
       "name": "fps"
      },
-     "link": 371
+     "link": 372
     },
     {
      "color_off": null,
@@ -645,7 +645,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      366
+      367
      ]
     },
     {
@@ -663,7 +663,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      357
+      358
      ]
     },
     {
@@ -681,7 +681,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      358
+      359
      ]
     },
     {
@@ -699,7 +699,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      359
+      360
      ]
     },
     {
@@ -717,7 +717,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      360
+      361
      ]
     },
     {
@@ -735,7 +735,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      361
+      362
      ]
     },
     {
@@ -753,7 +753,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      362
+      363
      ]
     },
     {
@@ -771,7 +771,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      363
+      364
      ]
     },
     {
@@ -789,7 +789,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      364
+      365
      ]
     },
     {
@@ -807,7 +807,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      365
+      366
      ]
     },
     {
@@ -1185,7 +1185,7 @@
   },
   {
    "id": 159,
-   "type": "99f1d06c-7627-4d59-97b7-9229d4056a1d",
+   "type": "56bbfbfe-7b22-40bd-bfc2-dc20629dd05c",
    "pos": [
     -4600,
     300
@@ -1437,7 +1437,7 @@
   },
   {
    "id": 160,
-   "type": "613a127e-28a9-4a5e-8e33-1f63ef292080",
+   "type": "ba4b9275-49d1-4830-b84f-3ab17771c613",
    "pos": [
     -4140,
     300
@@ -1737,7 +1737,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      367
+      368
      ]
     }
    ],
@@ -1781,7 +1781,7 @@
      "shape": null,
      "type": "IMAGE",
      "pos": null,
-     "link": 369
+     "link": 370
     },
     {
      "color_off": null,
@@ -1895,7 +1895,7 @@
      "shape": null,
      "type": "IMAGE",
      "pos": null,
-     "link": 370
+     "link": 371
     }
    ],
    "outputs": [
@@ -1997,7 +1997,7 @@
      "shape": 7,
      "type": "*",
      "pos": null,
-     "link": 368
+     "link": 369
     },
     {
      "color_off": null,
@@ -2285,7 +2285,7 @@
      "widget": {
       "name": "pick_b"
      },
-     "link": 372
+     "link": 373
     }
    ],
    "outputs": [
@@ -2321,7 +2321,7 @@
   },
   {
    "id": 167,
-   "type": "51c4565b-cec3-4cd6-b48b-bda5c0dc4f78",
+   "type": "63f1937c-675f-411c-a180-2c3b78571f69",
    "pos": [
     -2900,
     400
@@ -2348,7 +2348,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 357
+     "link": 358
     },
     {
      "color_off": null,
@@ -2363,7 +2363,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 358
+     "link": 359
     },
     {
      "color_off": null,
@@ -2378,7 +2378,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 359
+     "link": 360
     },
     {
      "color_off": null,
@@ -2393,7 +2393,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 360
+     "link": 361
     },
     {
      "color_off": null,
@@ -2408,7 +2408,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 361
+     "link": 362
     },
     {
      "color_off": null,
@@ -2423,7 +2423,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 362
+     "link": 363
     },
     {
      "color_off": null,
@@ -2438,7 +2438,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 363
+     "link": 364
     },
     {
      "color_off": null,
@@ -2453,7 +2453,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 364
+     "link": 365
     },
     {
      "color_off": null,
@@ -2468,7 +2468,7 @@
      "shape": 7,
      "type": "IMAGE",
      "pos": null,
-     "link": 365
+     "link": 366
     },
     {
      "color_off": null,
@@ -2485,7 +2485,7 @@
      "widget": {
       "name": "prompt"
      },
-     "link": 366
+     "link": 367
     },
     {
      "color_off": null,
@@ -2502,7 +2502,7 @@
      "widget": {
       "name": "mode"
      },
-     "link": 367
+     "link": 368
     }
    ],
    "outputs": [
@@ -2521,7 +2521,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      368
+      369
      ]
     },
     {
@@ -2539,8 +2539,8 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      369,
-      370
+      370,
+      371
      ]
     },
     {
@@ -2558,7 +2558,7 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      371
+      372
      ]
     },
     {
@@ -2576,7 +2576,25 @@
      "pos": null,
      "slot_index": null,
      "links": [
-      372
+      373
+     ]
+    },
+    {
+     "color_off": null,
+     "color_on": null,
+     "dir": null,
+     "label": null,
+     "localized_name": "filename_prefix",
+     "locked": null,
+     "name": "filename_prefix",
+     "nameLocked": null,
+     "removable": null,
+     "shape": null,
+     "type": "STRING",
+     "pos": null,
+     "slot_index": null,
+     "links": [
+      374
      ]
     }
    ],
@@ -2613,7 +2631,7 @@
    "title": "READ ME FIRST",
    "properties": {},
    "widgets_values": [
-    "## MiniMax H3 Ref2VA - subjects, shot loop, one toggle\n\n**Add samples and go:** load up to 4 images into each Subject\nsubgraph and describe each subject on the **Subject Prompt** node\n(`subject1_desc` / `subject2_desc`). Picture numbering is automatic -\nthe node compacts whatever is connected and writes the matching\nreference lines into the prompt (`Subject 1 ...: <Picture 1>,\n<Picture 2>.` etc.), so adding or removing a sample renumbers\neverything by itself. Fewer than 4 samples? Open the Subject and\ndelete the unused Load Image nodes. Your scene text goes in the\nInput Text (Prompt) node; the reference preamble is prepended for you.\n\n**Shot loop:** Repeat Open runs one H3 generation per pass\n(iterations = number of shots). The previous shot's LAST frame is fed\nback in as the highest-numbered Picture with a \"continue seamlessly\"\ninstruction - same subjects, same feel, new shot each pass. The\nestablishing-frame image seeds shot 1 and the reel.\n\n**Draft/final toggle (MODE):** draft = 0.2 MP, 4 s/shot, Lightning\nLoRA 4 steps, no interpolation. Final = 0.9 MP, 15 s/shot, full\n20-step model, FILM VFI x2 on the finished reel at 48 fps (cache\ncleared every 120 frames). The VFI branch is lazily bypassed in\ndraft - it never executes.\n\nNotes: the reel leads with the establishing still (trim with Get\nImage from Batch if unwanted); audio carries the last shot's track\n(H3 audio is per-shot - concatenate externally for full-length\nsound). Needs the H3 models (Model Links note) and the\nComfyUI-Frame-Interpolation pack for final mode. Every pass logs to\nthe terminal: [Repeat Open] pass 2 of 3 ... and [Subject Prompt]\n4 picture(s) assigned ...\n"
+    "## MiniMax H3 Ref2VA - subjects, shot loop, one toggle\n\n**Add samples and go:** load up to 4 images into each Subject\nsubgraph and describe each subject on the **Subject Prompt** node.\nPicture numbering is automatic - the node compacts whatever is\nconnected and writes the matching reference lines into the prompt\n(`Subject 1 ...: <Picture 1>, <Picture 2>.` etc.), so adding or\nremoving a sample renumbers everything by itself. Fewer than 4\nsamples? Open the Subject and delete the unused Load Image nodes.\nYour scene text goes in the Input Text (Prompt) node.\n\n**Shot loop:** Repeat Open runs one H3 generation per pass\n(iterations = number of shots). The previous shot's LAST frame is fed\nback in as the highest-numbered Picture with a \"continue seamlessly\"\ninstruction - same subjects, same feel, new shot each pass. The\nestablishing-frame image seeds shot 1 and the reel.\n\n**Render Mode - the only dial that matters:**\n\n|  | quick check (off) | final render (on) |\n|---|---|---|\n| resolution | 0.2 MP | 0.9 MP |\n| length/shot | capped at 4 s | your seconds (15 here) |\n| model | Lightning LoRA, fast | full model, full steps |\n| interpolation | none (never executes) | FILM x2 -> 48 fps |\n| saved to | video/quick-check | video/final-render |\n\nIterate on quick check until the shots feel right, flip to final\nrender, run once - different filename prefixes mean you never\noverwrite a keeper.\n\nNotes: the reel leads with the establishing still (trim with Get\nImage from Batch if unwanted); audio carries the last shot's track.\nNeeds the H3 models (Model Links note) and the\nComfyUI-Frame-Interpolation pack for final renders. Every pass logs\nto the terminal: [Render Mode] QUICK CHECK ... / [Repeat Open] pass\n2 of 3 ... / [Subject Prompt] 4 picture(s) assigned ...\n"
    ],
    "widgets_values_named": {
     "text": "## MiniMax H3 Ref2VA - subjects, shot loop, one toggle\n\n**Subjects:** two subgraphs, up to 4 images each (open one to load\nits pictures). Subject A fills <Picture 1>-<Picture 4>, Subject B\nfills <Picture 5>-<Picture 8> - reference them by those names in the\nprompt. They sit outside the loop, so they load once and cache.\n\n**Shot loop:** Repeat Open runs one H3 generation per pass\n(iterations = number of shots). <Picture 9> always carries the\nprevious shot's LAST frame, so each new shot continues from where\nthe last one ended - same subjects, same feel, new shot. The\nestablishing-frame image seeds shot 1 and the reel.\n\n**Draft/final toggle (MODE):** draft = 0.2 MP, 4 s/shot, Lightning\nLoRA 4 steps, no interpolation. Final = 0.9 MP, 15 s/shot, full\n20-step model, FILM VFI x2 on the finished reel at 48 fps (cache\ncleared every 120 frames). The VFI branch is lazily bypassed in\ndraft - it never executes.\n\nNotes: the reel leads with the establishing still (trim with Get\nImage from Batch if unwanted); audio carries the last shot's track\n(H3 audio is per-shot - concatenate externally for full-length\nsound). Needs the H3 models (Model Links note) and the\nComfyUI-Frame-Interpolation pack. Every pass logs to the terminal:\n[Repeat Open] pass 2 of 3 ...\n\nrenames: ref_images.ref_image_0 => Picture 1, ref_images.ref_image_1 => Picture 2, ref_images.ref_image_2 => Picture 3, ref_images.ref_image_3 => Picture 4, ref_images.ref_image_4 => Picture 5, ref_images.ref_image_5 => Picture 6, ref_images.ref_image_6 => Picture 7, ref_images.ref_image_7 => Picture 8, ref_images.ref_image_8 => Picture 9 (prev shot last frame), prompt => Prompt, mode => Mode (final?), AUDIO => shot audio, IMAGE => shot frames"
@@ -2800,7 +2818,7 @@
    "VIDEO"
   ],
   [
-   357,
+   358,
    148,
    1,
    167,
@@ -2808,7 +2826,7 @@
    "IMAGE"
   ],
   [
-   358,
+   359,
    148,
    2,
    167,
@@ -2816,7 +2834,7 @@
    "IMAGE"
   ],
   [
-   359,
+   360,
    148,
    3,
    167,
@@ -2824,7 +2842,7 @@
    "IMAGE"
   ],
   [
-   360,
+   361,
    148,
    4,
    167,
@@ -2832,7 +2850,7 @@
    "IMAGE"
   ],
   [
-   361,
+   362,
    148,
    5,
    167,
@@ -2840,7 +2858,7 @@
    "IMAGE"
   ],
   [
-   362,
+   363,
    148,
    6,
    167,
@@ -2848,7 +2866,7 @@
    "IMAGE"
   ],
   [
-   363,
+   364,
    148,
    7,
    167,
@@ -2856,7 +2874,7 @@
    "IMAGE"
   ],
   [
-   364,
+   365,
    148,
    8,
    167,
@@ -2864,7 +2882,7 @@
    "IMAGE"
   ],
   [
-   365,
+   366,
    148,
    9,
    167,
@@ -2872,7 +2890,7 @@
    "IMAGE"
   ],
   [
-   366,
+   367,
    148,
    0,
    167,
@@ -2880,7 +2898,7 @@
    "STRING"
   ],
   [
-   367,
+   368,
    161,
    0,
    167,
@@ -2888,7 +2906,7 @@
    "BOOLEAN"
   ],
   [
-   368,
+   369,
    167,
    0,
    164,
@@ -2896,7 +2914,7 @@
    "AUDIO"
   ],
   [
-   369,
+   370,
    167,
    1,
    162,
@@ -2904,7 +2922,7 @@
    "IMAGE"
   ],
   [
-   370,
+   371,
    167,
    1,
    163,
@@ -2912,7 +2930,7 @@
    "IMAGE"
   ],
   [
-   371,
+   372,
    167,
    2,
    130,
@@ -2920,12 +2938,20 @@
    "FLOAT"
   ],
   [
-   372,
+   373,
    167,
    3,
    166,
    2,
    "BOOLEAN"
+  ],
+  [
+   374,
+   167,
+   4,
+   92,
+   1,
+   "STRING"
   ]
  ],
  "floatingLinks": null,
@@ -3006,12 +3032,12 @@
  "definitions": {
   "subgraphs": [
    {
-    "id": "99f1d06c-7627-4d59-97b7-9229d4056a1d",
+    "id": "56bbfbfe-7b22-40bd-bfc2-dc20629dd05c",
     "version": 1,
     "state": {
      "lastGroupId": 6,
      "lastNodeId": 168,
-     "lastLinkId": 372,
+     "lastLinkId": 374,
      "lastRerouteId": 0
     },
     "revision": 0,
@@ -3039,7 +3065,7 @@
     },
     "inputs": [
      {
-      "id": "1a7f2f33-b906-4d2c-80d5-c2b46f6e4760",
+      "id": "f3a6c273-6381-415e-9595-24371e4be0e6",
       "name": "image",
       "type": "COMBO",
       "linkIds": [
@@ -3057,7 +3083,7 @@
       ]
      },
      {
-      "id": "d547f538-fceb-46d9-91b8-6eba02e73f1b",
+      "id": "b6bafbdb-7fd6-4463-a6e7-e37b79687cf8",
       "name": "upload",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3075,7 +3101,7 @@
       ]
      },
      {
-      "id": "b33e6a8c-ea07-4519-9432-bd5bb8c87953",
+      "id": "cf25f1ee-f8e9-4c68-8d8b-cf43c90bfdea",
       "name": "image_1",
       "type": "COMBO",
       "linkIds": [
@@ -3093,7 +3119,7 @@
       ]
      },
      {
-      "id": "c63ac305-d6e2-412e-a047-706dd42f593c",
+      "id": "9fd2eb0b-f11f-4f16-a67c-2ddda448567f",
       "name": "upload_1",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3111,7 +3137,7 @@
       ]
      },
      {
-      "id": "e7b68490-e845-4496-b235-617590fa5b52",
+      "id": "2865aa50-11f5-433d-abe7-9116fa847b75",
       "name": "image_2",
       "type": "COMBO",
       "linkIds": [
@@ -3129,7 +3155,7 @@
       ]
      },
      {
-      "id": "1a5d9aff-85d3-4c36-867f-b4b8d87fb2e8",
+      "id": "8ffa67e5-a988-48b2-a405-e30de4bafe6f",
       "name": "upload_2",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3147,7 +3173,7 @@
       ]
      },
      {
-      "id": "1f8cf348-59ff-483e-8ce4-030546fa4c3d",
+      "id": "63a24e57-1d20-4d66-b650-ea82610b4897",
       "name": "image_3",
       "type": "COMBO",
       "linkIds": [
@@ -3165,7 +3191,7 @@
       ]
      },
      {
-      "id": "96a7a712-f0b7-443b-90a0-4e476b8f46ac",
+      "id": "28eda15c-2c7f-49ac-add9-a798536dd5bf",
       "name": "upload_3",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3185,7 +3211,7 @@
     ],
     "outputs": [
      {
-      "id": "e501f8ce-2005-4c02-b4d9-cfa27ae0675a",
+      "id": "e8fbb5e1-8899-42e4-a9b8-8c7ac7122259",
       "name": "image 1",
       "type": "IMAGE",
       "linkIds": [
@@ -3203,7 +3229,7 @@
       ]
      },
      {
-      "id": "d3d3a2bf-7594-431e-8487-e68d92ec80a1",
+      "id": "086c22a5-984c-4c65-9736-87549024c52f",
       "name": "image 2",
       "type": "IMAGE",
       "linkIds": [
@@ -3221,7 +3247,7 @@
       ]
      },
      {
-      "id": "e51018d3-4a10-4494-86e0-82ccf856e67e",
+      "id": "f6867e24-1ca8-41f8-8b9c-215aa8433108",
       "name": "image 3",
       "type": "IMAGE",
       "linkIds": [
@@ -3239,7 +3265,7 @@
       ]
      },
      {
-      "id": "618b1170-033c-4fab-9850-fe1e57fc549d",
+      "id": "c6563ad7-745f-4d25-9267-f069f5b7141c",
       "name": "image 4",
       "type": "IMAGE",
       "linkIds": [
@@ -3763,12 +3789,12 @@
     "extra": {}
    },
    {
-    "id": "613a127e-28a9-4a5e-8e33-1f63ef292080",
+    "id": "ba4b9275-49d1-4830-b84f-3ab17771c613",
     "version": 1,
     "state": {
      "lastGroupId": 6,
      "lastNodeId": 168,
-     "lastLinkId": 372,
+     "lastLinkId": 374,
      "lastRerouteId": 0
     },
     "revision": 0,
@@ -3796,7 +3822,7 @@
     },
     "inputs": [
      {
-      "id": "50a43e38-f2e2-4925-a033-d25d551fcaa9",
+      "id": "5183a39c-f760-402b-96c6-79721cd8d8ec",
       "name": "image",
       "type": "COMBO",
       "linkIds": [
@@ -3814,7 +3840,7 @@
       ]
      },
      {
-      "id": "bafa8133-e4ae-4c52-b794-c5f98524c9c5",
+      "id": "c16ef01c-bc5c-4e56-bc3b-03dab84c414d",
       "name": "upload",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3832,7 +3858,7 @@
       ]
      },
      {
-      "id": "8c0c651b-6195-4dce-a0fa-8a2b4b82daf7",
+      "id": "6d88fdad-41b2-4edb-97f5-f8697710ea23",
       "name": "image_1",
       "type": "COMBO",
       "linkIds": [
@@ -3850,7 +3876,7 @@
       ]
      },
      {
-      "id": "46acf9ba-5161-4887-8350-6cf11eb1e0ef",
+      "id": "244f7792-1a54-42a5-bc52-31f5f56daa97",
       "name": "upload_1",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3868,7 +3894,7 @@
       ]
      },
      {
-      "id": "0b0cbba7-1b27-4b21-a9d2-e7a951198d6a",
+      "id": "b49d3d2b-f088-4241-80fc-f5706988f665",
       "name": "image_2",
       "type": "COMBO",
       "linkIds": [
@@ -3886,7 +3912,7 @@
       ]
      },
      {
-      "id": "98e1e6f7-398c-424b-abd2-f0b99fc80322",
+      "id": "72f661c4-6706-4139-ae3b-e4cd9bf6e37f",
       "name": "upload_2",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3904,7 +3930,7 @@
       ]
      },
      {
-      "id": "dded9d1a-03da-40da-ba4d-2a25806c0006",
+      "id": "d8d5b217-d41d-47b6-b862-0f20e32c57e8",
       "name": "image_3",
       "type": "COMBO",
       "linkIds": [
@@ -3922,7 +3948,7 @@
       ]
      },
      {
-      "id": "0945b113-3890-4a35-b187-fa6b752657fd",
+      "id": "858aeef2-9b16-4a94-a871-a85f4d964d63",
       "name": "upload_3",
       "type": "IMAGEUPLOAD",
       "linkIds": [
@@ -3942,7 +3968,7 @@
     ],
     "outputs": [
      {
-      "id": "969f7963-c289-41ce-aa6f-6ef1c26fdc9f",
+      "id": "2f8d0555-70fa-45ce-8350-bffccc155c89",
       "name": "image 1",
       "type": "IMAGE",
       "linkIds": [
@@ -3960,7 +3986,7 @@
       ]
      },
      {
-      "id": "36140ac9-6d3e-42b6-be65-a5e39cc75173",
+      "id": "2d9f0385-f7b9-4681-8e5b-bde3e1981225",
       "name": "image 2",
       "type": "IMAGE",
       "linkIds": [
@@ -3978,7 +4004,7 @@
       ]
      },
      {
-      "id": "029f1994-e908-435c-99e2-222e185db8c6",
+      "id": "d206157b-1405-4c14-8360-cf657142d99a",
       "name": "image 3",
       "type": "IMAGE",
       "linkIds": [
@@ -3996,7 +4022,7 @@
       ]
      },
      {
-      "id": "ced7c128-70ca-4424-a904-a098f9266c55",
+      "id": "867149a3-566d-4946-b8df-b2369968af6f",
       "name": "image 4",
       "type": "IMAGE",
       "linkIds": [
@@ -4520,12 +4546,12 @@
     "extra": {}
    },
    {
-    "id": "51c4565b-cec3-4cd6-b48b-bda5c0dc4f78",
+    "id": "63f1937c-675f-411c-a180-2c3b78571f69",
     "version": 1,
     "state": {
      "lastGroupId": 6,
      "lastNodeId": 168,
-     "lastLinkId": 372,
+     "lastLinkId": 374,
      "lastRerouteId": 0
     },
     "revision": 0,
@@ -4545,15 +4571,15 @@
      "id": -20,
      "bounding": [
       700,
-      3156,
-      128,
-      128
+      3146,
+      135.0234375,
+      148
      ],
      "pinned": null
     },
     "inputs": [
      {
-      "id": "d9216a75-5d5f-4159-b200-1bd12d6ad3ca",
+      "id": "f82a0847-33bf-4929-a6a1-d430ac4fc324",
       "name": "Picture 1",
       "type": "IMAGE",
       "linkIds": [
@@ -4571,7 +4597,7 @@
       ]
      },
      {
-      "id": "8ed5ca03-06da-4502-a982-3bd653ef5c7a",
+      "id": "e2cf4f3e-4917-4944-9876-7ae80d4493a2",
       "name": "Picture 2",
       "type": "IMAGE",
       "linkIds": [
@@ -4589,7 +4615,7 @@
       ]
      },
      {
-      "id": "7686adcd-a7bd-4de3-8377-3544274c790a",
+      "id": "b0c6b943-3563-4a72-9538-41a831091e23",
       "name": "Picture 3",
       "type": "IMAGE",
       "linkIds": [
@@ -4607,7 +4633,7 @@
       ]
      },
      {
-      "id": "0ce76e50-69ab-498d-b12f-db15afc519bd",
+      "id": "f0ef9082-0288-4fb5-b3a6-b2c36b216284",
       "name": "Picture 4",
       "type": "IMAGE",
       "linkIds": [
@@ -4625,7 +4651,7 @@
       ]
      },
      {
-      "id": "b4116b45-a92a-430e-bbf2-aa1aba31b6d4",
+      "id": "a94e353d-f0b3-4960-9de4-c96e03e09051",
       "name": "Picture 5",
       "type": "IMAGE",
       "linkIds": [
@@ -4643,7 +4669,7 @@
       ]
      },
      {
-      "id": "73197c5c-2b5a-4f9a-a00e-7123584609da",
+      "id": "ec7dbeee-4507-413d-89f2-7d6992926950",
       "name": "Picture 6",
       "type": "IMAGE",
       "linkIds": [
@@ -4661,7 +4687,7 @@
       ]
      },
      {
-      "id": "f8f96850-532a-43d1-8202-ee6ac981a8d9",
+      "id": "c069a662-92cd-4012-a91e-0808cfe4866e",
       "name": "Picture 7",
       "type": "IMAGE",
       "linkIds": [
@@ -4679,7 +4705,7 @@
       ]
      },
      {
-      "id": "267d9717-bddd-4bd4-a86b-f89e3968b842",
+      "id": "a8b768ba-35da-4060-8eb9-f6a557b4d881",
       "name": "Picture 8",
       "type": "IMAGE",
       "linkIds": [
@@ -4697,7 +4723,7 @@
       ]
      },
      {
-      "id": "38711ba4-e01d-4b6d-82dc-f8a0dead1100",
+      "id": "78f62446-cc45-4bc5-8651-0e0a2ed5d4a2",
       "name": "Picture 9 (prev shot last frame)",
       "type": "IMAGE",
       "linkIds": [
@@ -4715,7 +4741,7 @@
       ]
      },
      {
-      "id": "dee8cd21-4268-41ee-a99b-6f33e3282d55",
+      "id": "38af7e57-158b-4b4c-97c5-19175717b80f",
       "name": "Prompt",
       "type": "STRING",
       "linkIds": [
@@ -4733,7 +4759,7 @@
       ]
      },
      {
-      "id": "566c25ab-da52-4cbe-ae79-04fb2ecfac16",
+      "id": "ab36a04f-ff43-4e99-87e4-9175ea65d794",
       "name": "Mode (final?)",
       "type": "BOOLEAN",
       "linkIds": [
@@ -4753,7 +4779,7 @@
     ],
     "outputs": [
      {
-      "id": "d5eff2ea-ae78-4655-ab33-6acf7c0233d5",
+      "id": "423ab2f3-f4b5-4032-9b25-74bea321669e",
       "name": "shot audio",
       "type": "AUDIO",
       "linkIds": [
@@ -4771,7 +4797,7 @@
       ]
      },
      {
-      "id": "3ebbe91a-159c-46e5-9f4d-762ad82c3379",
+      "id": "63f28a76-4060-4bfa-94ea-96a157e929bc",
       "name": "shot frames",
       "type": "IMAGE",
       "linkIds": [
@@ -4790,7 +4816,7 @@
       ]
      },
      {
-      "id": "77f409da-c9d1-4d8c-82cf-a43dd67b8a45",
+      "id": "89d97c89-8947-4133-b46e-0263ebd87308",
       "name": "fps",
       "type": "FLOAT",
       "linkIds": [
@@ -4808,7 +4834,7 @@
       ]
      },
      {
-      "id": "f8894b22-892e-4e90-96cc-9db86a64adc5",
+      "id": "55aa6d48-db4d-4e8f-b3d4-d201f316ab64",
       "name": "is_final",
       "type": "BOOLEAN",
       "linkIds": [
@@ -4823,6 +4849,24 @@
       "pos": [
        24,
        84
+      ]
+     },
+     {
+      "id": "02677708-ced2-4c56-b09a-14a4c0aabcf5",
+      "name": "filename_prefix",
+      "type": "STRING",
+      "linkIds": [
+       357
+      ],
+      "localized_name": "filename_prefix",
+      "label": null,
+      "dir": null,
+      "shape": null,
+      "color_off": null,
+      "color_on": null,
+      "pos": [
+       24,
+       104
       ]
      }
     ],
@@ -7012,50 +7056,20 @@
      },
      {
       "id": 147,
-      "type": "QualityModeSwitch",
+      "type": "RenderMode",
       "pos": [
        -2600,
        1600
       ],
       "size": [
-       270,
-       506
+       371.259375,
+       182
       ],
       "flags": {},
       "order": 21,
       "mode": 0,
       "showAdvanced": null,
       "inputs": [
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_model",
-        "locked": null,
-        "name": "draft_model",
-        "nameLocked": null,
-        "removable": null,
-        "shape": 7,
-        "type": "MODEL",
-        "pos": null,
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_model",
-        "locked": null,
-        "name": "final_model",
-        "nameLocked": null,
-        "removable": null,
-        "shape": 7,
-        "type": "MODEL",
-        "pos": null,
-        "link": null
-       },
        {
         "color_off": null,
         "color_on": null,
@@ -7078,307 +7092,20 @@
         "color_on": null,
         "dir": null,
         "label": null,
-        "localized_name": "draft_fps",
+        "localized_name": "seconds",
         "locked": null,
-        "name": "draft_fps",
+        "name": "seconds",
         "nameLocked": null,
         "removable": null,
         "shape": null,
         "type": "FLOAT",
         "widget": {
-         "name": "draft_fps"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_frames",
-        "locked": null,
-        "name": "draft_frames",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "widget": {
-         "name": "draft_frames"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_steps",
-        "locked": null,
-        "name": "draft_steps",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "widget": {
-         "name": "draft_steps"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_cfg",
-        "locked": null,
-        "name": "draft_cfg",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "draft_cfg"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_seconds",
-        "locked": null,
-        "name": "draft_seconds",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "draft_seconds"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "draft_megapixels",
-        "locked": null,
-        "name": "draft_megapixels",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "draft_megapixels"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_fps",
-        "locked": null,
-        "name": "final_fps",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "final_fps"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_frames",
-        "locked": null,
-        "name": "final_frames",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "widget": {
-         "name": "final_frames"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_steps",
-        "locked": null,
-        "name": "final_steps",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "widget": {
-         "name": "final_steps"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_cfg",
-        "locked": null,
-        "name": "final_cfg",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "final_cfg"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_seconds",
-        "locked": null,
-        "name": "final_seconds",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "final_seconds"
-        },
-        "link": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "final_megapixels",
-        "locked": null,
-        "name": "final_megapixels",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "widget": {
-         "name": "final_megapixels"
+         "name": "seconds"
         },
         "link": null
        }
       ],
       "outputs": [
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "model",
-        "locked": null,
-        "name": "model",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "MODEL",
-        "pos": null,
-        "slot_index": null,
-        "links": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "fps",
-        "locked": null,
-        "name": "fps",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "pos": null,
-        "slot_index": null,
-        "links": [
-         355
-        ]
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "frames",
-        "locked": null,
-        "name": "frames",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "pos": null,
-        "slot_index": null,
-        "links": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "steps",
-        "locked": null,
-        "name": "steps",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "INT",
-        "pos": null,
-        "slot_index": null,
-        "links": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "cfg",
-        "locked": null,
-        "name": "cfg",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "FLOAT",
-        "pos": null,
-        "slot_index": null,
-        "links": null
-       },
-       {
-        "color_off": null,
-        "color_on": null,
-        "dir": null,
-        "label": null,
-        "localized_name": "is_final",
-        "locked": null,
-        "name": "is_final",
-        "nameLocked": null,
-        "removable": null,
-        "shape": null,
-        "type": "BOOLEAN",
-        "pos": null,
-        "slot_index": null,
-        "links": [
-         352
-        ]
-       },
        {
         "color_off": null,
         "color_on": null,
@@ -7420,9 +7147,27 @@
         "color_on": null,
         "dir": null,
         "label": null,
-        "localized_name": "is_draft",
+        "localized_name": "fps",
         "locked": null,
-        "name": "is_draft",
+        "name": "fps",
+        "nameLocked": null,
+        "removable": null,
+        "shape": null,
+        "type": "FLOAT",
+        "pos": null,
+        "slot_index": null,
+        "links": [
+         355
+        ]
+       },
+       {
+        "color_off": null,
+        "color_on": null,
+        "dir": null,
+        "label": null,
+        "localized_name": "lightning_lora",
+        "locked": null,
+        "name": "lightning_lora",
         "nameLocked": null,
         "removable": null,
         "shape": null,
@@ -7432,40 +7177,55 @@
         "links": [
          293
         ]
+       },
+       {
+        "color_off": null,
+        "color_on": null,
+        "dir": null,
+        "label": null,
+        "localized_name": "is_final",
+        "locked": null,
+        "name": "is_final",
+        "nameLocked": null,
+        "removable": null,
+        "shape": null,
+        "type": "BOOLEAN",
+        "pos": null,
+        "slot_index": null,
+        "links": [
+         352
+        ]
+       },
+       {
+        "color_off": null,
+        "color_on": null,
+        "dir": null,
+        "label": null,
+        "localized_name": "filename_prefix",
+        "locked": null,
+        "name": "filename_prefix",
+        "nameLocked": null,
+        "removable": null,
+        "shape": null,
+        "type": "STRING",
+        "pos": null,
+        "slot_index": null,
+        "links": [
+         357
+        ]
        }
       ],
+      "title": "Render Mode",
       "properties": {
-       "Node name for S&R": "QualityModeSwitch"
+       "Node name for S&R": "RenderMode"
       },
       "widgets_values": [
        false,
-       24,
-       33,
-       4,
-       1,
-       4,
-       0.2,
-       48,
-       121,
-       30,
-       3.5,
-       15,
-       0.9
+       15
       ],
       "widgets_values_named": {
        "mode": false,
-       "draft_fps": 24,
-       "draft_frames": 33,
-       "draft_steps": 4,
-       "draft_cfg": 1,
-       "draft_seconds": 4,
-       "draft_megapixels": 0.2,
-       "final_fps": 48,
-       "final_frames": 121,
-       "final_steps": 30,
-       "final_cfg": 3.5,
-       "final_seconds": 15,
-       "final_megapixels": 0.9
+       "seconds": 15
       }
      }
     ],
@@ -7474,7 +7234,7 @@
      {
       "id": 294,
       "origin_id": 147,
-      "origin_slot": 7,
+      "origin_slot": 1,
       "target_id": 115,
       "target_slot": 1,
       "type": "FLOAT"
@@ -7594,7 +7354,7 @@
      {
       "id": 292,
       "origin_id": 147,
-      "origin_slot": 6,
+      "origin_slot": 0,
       "target_id": 132,
       "target_slot": 0,
       "type": "FLOAT"
@@ -7706,7 +7466,7 @@
      {
       "id": 293,
       "origin_id": 147,
-      "origin_slot": 8,
+      "origin_slot": 3,
       "target_id": 146,
       "target_slot": 0,
       "type": "BOOLEAN"
@@ -7796,7 +7556,7 @@
       "origin_id": -10,
       "origin_slot": 10,
       "target_id": 147,
-      "target_slot": 2,
+      "target_slot": 0,
       "type": "BOOLEAN"
      },
      {
@@ -7818,7 +7578,7 @@
      {
       "id": 355,
       "origin_id": 147,
-      "origin_slot": 1,
+      "origin_slot": 2,
       "target_id": -20,
       "target_slot": 2,
       "type": "FLOAT"
@@ -7826,10 +7586,18 @@
      {
       "id": 352,
       "origin_id": 147,
-      "origin_slot": 5,
+      "origin_slot": 4,
       "target_id": -20,
       "target_slot": 3,
       "type": "BOOLEAN"
+     },
+     {
+      "id": 357,
+      "origin_id": 147,
+      "origin_slot": 5,
+      "target_id": -20,
+      "target_slot": 4,
+      "type": "STRING"
      }
     ],
     "reroutes": null,

@@ -257,3 +257,48 @@ class TestSubjectPrompt:
         declared = set(spec["required"]) | set(spec["optional"])
         named = {n for n in declared if n in params}
         assert accepts_kwargs and "scene" in named and "prev_frame" in named
+
+
+class TestRenderMode:
+    def test_registered(self):
+        from nodes import RenderMode
+
+        assert NODE_CLASS_MAPPINGS["RenderMode"] is RenderMode
+        assert len(RenderMode.RETURN_TYPES) == len(RenderMode.RETURN_NAMES)
+
+    def test_quick_check_preset(self):
+        from nodes import RenderMode
+
+        out = RenderMode().route(False, 9.0)
+        seconds, mp, fps, lora, is_final, prefix = out
+        assert seconds == 4.0  # capped
+        assert mp == 0.2
+        assert fps == 24.0
+        assert lora is True
+        assert is_final is False
+        assert prefix == "video/quick-check"
+
+    def test_quick_check_respects_shorter_request(self):
+        from nodes import RenderMode
+
+        assert RenderMode().route(False, 2.5)[0] == 2.5
+
+    def test_final_render_preset(self):
+        from nodes import RenderMode
+
+        out = RenderMode().route(True, 15.0)
+        seconds, mp, fps, lora, is_final, prefix = out
+        assert seconds == 15.0  # never capped
+        assert mp == 0.9
+        assert fps == 48.0  # 24 base x2 interpolation
+        assert lora is False
+        assert is_final is True
+        assert prefix == "video/final-render"
+
+    def test_only_two_controls(self):
+        """The whole point: nothing but mode and seconds is exposed."""
+        from nodes import RenderMode
+
+        spec = RenderMode.INPUT_TYPES()
+        assert set(spec["required"]) == {"mode", "seconds"}
+        assert "optional" not in spec or not spec.get("optional")
