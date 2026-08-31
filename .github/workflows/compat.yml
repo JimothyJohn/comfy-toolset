@@ -1,0 +1,61 @@
+# Scheduled compatibility watch: runs the live integration suite
+# against ComfyUI master (tomorrow's breakage) and the latest release
+# (today's users) daily. On failure it opens — or comments on — a
+# `comfy-compat` issue so drift is caught the day it lands, not when a
+# workflow dies.
+# NOTE: scheduled workflows only run from the DEFAULT branch — this is
+# inert until promoted to main (same caveat as dependabot.yml).
+name: ComfyUI compat
+
+on:
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: compat
+  cancel-in-progress: false
+
+jobs:
+  compat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        comfy-ref: [master, latest-release]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          enable-cache: true
+      - name: Provision ComfyUI (${{ matrix.comfy-ref }}, CPU)
+        run: ./scripts/setup-comfyui.sh "$RUNNER_TEMP/ComfyUI" "${{ matrix.comfy-ref }}"
+      - name: Sync dependencies (locked)
+        run: uv sync --locked
+      - name: Integration suite
+        env:
+          COMFYUI_DIR: ${{ runner.temp }}/ComfyUI
+        run: uv run pytest -m integration -v
+      - name: File or refresh breakage issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="ComfyUI compat break: ${{ matrix.comfy-ref }}"
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          body="Scheduled compat run failed against ComfyUI \`${{ matrix.comfy-ref }}\`: $run_url"
+          gh label create comfy-compat --repo "$GITHUB_REPOSITORY" \
+            --color D93F0B --description "Breakage against a ComfyUI ref" 2>/dev/null || true
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --label comfy-compat \
+            --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" \
+              --label comfy-compat --body "$body"
+          fi

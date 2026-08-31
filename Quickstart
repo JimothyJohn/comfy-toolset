@@ -23,14 +23,17 @@ log() {
 help_function() {
     cat <<EOF
 
-Usage: $(basename "$0") [-h] [-u]
+Usage: $(basename "$0") [-h] [-u] [-i]
 
 Development ladder for comfy-toolset (ComfyUI custom node pack).
 Default (no args): install dev env -> lint -> format -> unit tests.
 
 Options:
-  -h, --help       Display this help message and exit
-  -u, --unit-test  Run unit tests only (skip env setup and lint)
+  -h, --help              Display this help message and exit
+  -u, --unit-test         Run unit tests only (skip env setup and lint)
+  -i, --integration-test  Run live tests against a real ComfyUI
+                          (needs COMFYUI_DIR; provision one with
+                          ./scripts/setup-comfyui.sh /tmp/ComfyUI master)
 
 EOF
 }
@@ -90,6 +93,19 @@ main() {
                 ;;
             -u|--unit-test)
                 test_unit || { log "Unit tests failed"; exit 1; }
+                exit 0
+                ;;
+            -i|--integration-test)
+                if [[ -z "${COMFYUI_DIR:-}" ]]; then
+                    log "COMFYUI_DIR not set. Provision a checkout first:"
+                    log "  ./scripts/setup-comfyui.sh /tmp/ComfyUI master"
+                    exit 1
+                fi
+                log "Running integration tests against ${COMFYUI_DIR}..."
+                if ! uv run pytest -m integration -v; then
+                    log "Integration tests failed"
+                    exit 1
+                fi
                 exit 0
                 ;;
             *)
