@@ -47,6 +47,42 @@ conditioning, …) with the same lazy bypass. Chain its `pick_b` from
 `is_final` to hang more per-mode differences (an upscaler, an
 interpolator) off the same toggle.
 
+### Repeat Open / Repeat Close (`toolset`)
+
+Counted loop for running a subgraph N times, feeding each pass's
+outputs back in as the next pass's inputs — e.g. chaining multiple
+MiniMax (Hailuo) shots into one long animation by carrying the last
+frame of shot *k* in as the first frame of shot *k+1*.
+
+ComfyUI graphs are DAGs, so the loop works via [node
+expansion](https://docs.comfy.org/custom-nodes/backend/expansion):
+after each pass, Repeat Close clones the subgraph between the pair and
+splices it into the execution graph, until `iterations` passes have
+run. Only two wires are required — `flow_control` from Open to Close,
+plus whichever of the four any-type value slots you use. The
+`iterations` count must stay a widget value (not a connection); it is
+read before the graph runs. Leave the `_remaining` input unconnected —
+it's the loop's internal counter.
+
+Repeat Open also outputs `index` (0-based pass number) and
+`iterations`, for driving per-shot prompts, seeds, or filenames.
+
+Shot-chaining sketch:
+
+```
+start frame ── value0 → Repeat Open ── value0 (current first frame) → MiniMax H3 shot
+                 │            │ index → per-shot prompt/seed select        │
+                 │            └ value1 (frames so far) ─→ Image Batch ←────┤ (shot frames)
+                 │                                            │            │ (last frame)
+                 └ flow_control → Repeat Close ← value1 ──────┘            │
+                                       ↑ value0 ←──────────────────────────┘
+                                       └ value1 out → all frames → video combine
+```
+
+Each pass: `value0` carries the latest last-frame into the next shot,
+`value1` accumulates the growing frame batch, and after N passes Repeat
+Close's `value1` holds every frame of the full animation.
+
 ## Install
 
 ```sh
