@@ -41,8 +41,28 @@ class QualityModeSwitch:
 
     CATEGORY = "toolset"
     FUNCTION = "route"
-    RETURN_TYPES = ("MODEL", "FLOAT", "INT", "INT", "FLOAT", "BOOLEAN")
-    RETURN_NAMES = ("model", "fps", "frames", "steps", "cfg", "is_final")
+    RETURN_TYPES = (
+        "MODEL",
+        "FLOAT",
+        "INT",
+        "INT",
+        "FLOAT",
+        "BOOLEAN",
+        "FLOAT",
+        "FLOAT",
+        "BOOLEAN",
+    )
+    RETURN_NAMES = (
+        "model",
+        "fps",
+        "frames",
+        "steps",
+        "cfg",
+        "is_final",
+        "seconds",
+        "megapixels",
+        "is_draft",
+    )
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -62,6 +82,14 @@ class QualityModeSwitch:
                     "FLOAT",
                     {"default": 1.0, "min": 0.0, "max": 100.0, "step": 0.01},
                 ),
+                "draft_seconds": (
+                    "FLOAT",
+                    {"default": 4.0, "min": 0.1, "max": 3600.0, "step": 0.1},
+                ),
+                "draft_megapixels": (
+                    "FLOAT",
+                    {"default": 0.2, "min": 0.01, "max": 16.0, "step": 0.01},
+                ),
                 "final_fps": (
                     "FLOAT",
                     {"default": 24.0, "min": 0.01, "max": 480.0, "step": 0.01},
@@ -71,6 +99,14 @@ class QualityModeSwitch:
                 "final_cfg": (
                     "FLOAT",
                     {"default": 3.5, "min": 0.0, "max": 100.0, "step": 0.01},
+                ),
+                "final_seconds": (
+                    "FLOAT",
+                    {"default": 9.0, "min": 0.1, "max": 3600.0, "step": 0.1},
+                ),
+                "final_megapixels": (
+                    "FLOAT",
+                    {"default": 0.9, "min": 0.01, "max": 16.0, "step": 0.01},
                 ),
             },
             "optional": {
@@ -91,10 +127,14 @@ class QualityModeSwitch:
         draft_frames,
         draft_steps,
         draft_cfg,
+        draft_seconds,
+        draft_megapixels,
         final_fps,
         final_frames,
         final_steps,
         final_cfg,
+        final_seconds,
+        final_megapixels,
         draft_model=None,
         final_model=None,
     ):
@@ -114,22 +154,47 @@ class QualityModeSwitch:
         if mode:
             logger.info(
                 "[Quality Mode Switch] FINAL mode: fps=%s frames=%s steps=%s "
-                "cfg=%s (draft branch bypassed — its LoRA chain never runs)",
+                "cfg=%s seconds=%s megapixels=%s (draft branch bypassed — its "
+                "LoRA chain never runs)",
                 final_fps,
                 final_frames,
                 final_steps,
                 final_cfg,
+                final_seconds,
+                final_megapixels,
             )
-            return (model, final_fps, final_frames, final_steps, final_cfg, True)
+            return (
+                model,
+                final_fps,
+                final_frames,
+                final_steps,
+                final_cfg,
+                True,
+                final_seconds,
+                final_megapixels,
+                False,
+            )
         logger.info(
             "[Quality Mode Switch] DRAFT mode: fps=%s frames=%s steps=%s "
-            "cfg=%s (final branch bypassed)",
+            "cfg=%s seconds=%s megapixels=%s (final branch bypassed)",
             draft_fps,
             draft_frames,
             draft_steps,
             draft_cfg,
+            draft_seconds,
+            draft_megapixels,
         )
-        return (model, draft_fps, draft_frames, draft_steps, draft_cfg, False)
+        return (
+            model,
+            draft_fps,
+            draft_frames,
+            draft_steps,
+            draft_cfg,
+            False,
+            draft_seconds,
+            draft_megapixels,
+            True,
+        )
 
 
 class LazySwitch:
@@ -190,12 +255,94 @@ class LazySwitch:
         return (value,)
 
 
+class SubjectPrompt:
+    """Auto-number reference pictures per subject and build the prompt.
+
+    Feed each subject's sample images (up to 4 per subject) and
+    optionally the previous shot's last frame. Connected images are
+    compacted in order into ``picture1..picture9`` (matching MiniMax
+    H3's ``<Picture i>`` numbering, which skips empty slots), and the
+    ``prompt`` output opens with the matching reference lines — so
+    adding or removing a sample renumbers everything automatically.
+
+    Wire picture1..picture9 straight into the H3 ref_image slots and
+    ``prompt`` into its prompt input; unused picture outputs carry
+    nothing and H3 ignores them.
+    """
+
+    CATEGORY = "toolset"
+    FUNCTION = "build"
+    MAX_PER_SUBJECT = 4
+    MAX_PICTURES = 9
+
+    RETURN_TYPES = ("STRING",) + ("IMAGE",) * MAX_PICTURES + ("INT",)
+    RETURN_NAMES = (
+        ("prompt",)
+        + tuple(f"picture{i}" for i in range(1, MAX_PICTURES + 1))
+        + ("picture_count",)
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        optional = {}
+        for subject in (1, 2):
+            for i in range(1, cls.MAX_PER_SUBJECT + 1):
+                optional[f"subject{subject}_image{i}"] = ("IMAGE",)
+        optional["prev_frame"] = ("IMAGE",)
+        return {
+            "required": {
+                "scene": ("STRING", {"default": "", "multiline": True}),
+                "subject1_desc": ("STRING", {"default": "Subject 1"}),
+                "subject2_desc": ("STRING", {"default": "Subject 2"}),
+            },
+            "optional": optional,
+        }
+
+    def build(self, scene, subject1_desc, subject2_desc, prev_frame=None, **kwargs):
+        pictures = []
+        lines = []
+        for subject, desc in ((1, subject1_desc), (2, subject2_desc)):
+            numbers = []
+            for i in range(1, self.MAX_PER_SUBJECT + 1):
+                image = kwargs.get(f"subject{subject}_image{i}")
+                if image is None:
+                    continue
+                pictures.append(image)
+                numbers.append(len(pictures))
+            if numbers:
+                tags = ", ".join(f"<Picture {n}>" for n in numbers)
+                label = desc.strip() or f"Subject {subject}"
+                lines.append(f"{label}: {tags}.")
+        if prev_frame is not None:
+            pictures.append(prev_frame)
+            lines.append(
+                f"<Picture {len(pictures)}> is the last frame of the previous "
+                "shot; continue seamlessly from it into a new shot."
+            )
+        if len(pictures) > self.MAX_PICTURES:
+            raise ValueError(
+                f"SubjectPrompt: {len(pictures)} reference pictures connected "
+                f"but MiniMax H3 supports at most {self.MAX_PICTURES}."
+            )
+        parts = lines + ([scene.strip()] if scene.strip() else [])
+        prompt = "\n".join(parts)
+        logger.info(
+            "[Subject Prompt] %d picture(s) assigned: %s",
+            len(pictures),
+            " | ".join(lines) if lines else "none",
+        )
+        padded = pictures + [None] * (self.MAX_PICTURES - len(pictures))
+        return (prompt, *padded, len(pictures))
+
+
 NODE_CLASS_MAPPINGS = {
     "QualityModeSwitch": QualityModeSwitch,
     "LazySwitch": LazySwitch,
+    "SubjectPrompt": SubjectPrompt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "QualityModeSwitch": "Quality Mode Switch",
     "LazySwitch": "Lazy Switch (Any)",
+    "SubjectPrompt": "Subject Prompt (H3 refs)",
 }
